@@ -46,8 +46,8 @@ def preprocess_img_disc(real_images, fake_images, channels):
         new_real = new_real.unsqueeze(1)
         new_fake = new_fake.unsqueeze(1)
     else:
-        new_real = real_images #blur(real_images, kernel_blur)
-        new_fake = fake_images #blur(fake_images, kernel_blur)
+        new_real = blur(real_images, kernel_blur)
+        new_fake = blur(fake_images, kernel_blur)
     return new_real, new_fake
 
 
