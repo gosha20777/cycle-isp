@@ -9,11 +9,11 @@ The **Image Signal Processor (ISP)** is a fundamental component in modern smartp
 
 We address this challenge by proposing **a novel training method** for a learnable ISP that eliminates the need for direct correspondences between raw images and ground-truth data with matching content. Our **unpaired approach** employs a multi-term loss function guided by adversarial training with multiple discriminators processing feature maps from pre-trained networks to maintain content structure while learning color and texture characteristics from the target RGB dataset.
 
-<img src="media/narchitecture.png" alt="architecture" width="800"> 
+<img src="media/architecture.png" alt="architecture" width="800"> 
 
 Compared to paired approaches, our strategy does not require the costly and time-consuming acquisition of paired datasets and is not affected by pixel misalignment caused by factors such as viewpoint differences, dynamic elements, or artifacts introduced by alignment algorithms.
 
-<img src="media/nsamples.png" alt="samples" width="800"> 
+<img src="media/samples.png" alt="samples" width="800"> 
 
 
 ----
