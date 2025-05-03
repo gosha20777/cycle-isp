@@ -3,8 +3,8 @@ import argparse
 import time
 import subprocess
 
-def main(a, process_script, output_dir, script_path):
-    for b in range(0, a, 10):
+def main(a, step, process_script, output_dir, script_path):
+    for b in range(0, a, step):
         session_name = f"sess_{b}"
         command = (
             f"tmux new-session -d -s {session_name} "
@@ -23,9 +23,10 @@ def main(a, process_script, output_dir, script_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('a', type=int, help="The divisor for the condition")
+    parser.add_argument('--step', type=int, default=10, help="Step size for the range (default: 10)")
     parser.add_argument('--process_script', type=str, default="process_subset.py", help="Path to the process_subset script")
     parser.add_argument('--output_dir', type=str, default="output", help="Directory containing model files")
     parser.add_argument('--script_path', type=str, default="inference.py", help="Path to the inference script")
     args = parser.parse_args()
 
-    main(args.a, args.process_script, args.output_dir, args.script_path)
+    main(args.a, args.step, args.process_script, args.output_dir, args.script_path)

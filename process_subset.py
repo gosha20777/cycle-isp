@@ -15,7 +15,6 @@ def main(a, b, output_dir, script_path):
 
     for model_number in model_numbers:
         if model_number % a == b:
-            print("hey")
             print(f"Running inference for model {model_number} (satisfies {model_number} % {a} == {b})")
             subprocess.run(["python3", script_path, str(model_number)], check=True)
 
