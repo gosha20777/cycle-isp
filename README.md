@@ -1,6 +1,9 @@
 # Learned Lightweight Smartphone ISP with Unpaired Data @ CVPRW 2025
 ### The IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), 2025, Nashville
 
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2505.10420)
+[![Paper page](https://huggingface.co/datasets/huggingface/badges/raw/main/paper-page-md-dark.svg)](https://huggingface.co/papers/2505.10420)
+
 [Andrei Arhire](https://scholar.google.com/citations?user=BYkEZGFPq1wC&hl=ro), [Radu Timofte](https://scholar.google.com/citations?user=u3MwH5kAAAAJ&hl=en)
 
 ----
