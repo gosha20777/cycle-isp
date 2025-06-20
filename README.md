@@ -1,10 +1,14 @@
 # Learned Lightweight Smartphone ISP with Unpaired Data @ CVPRW 2025
 ### The IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), 2025, Nashville
 
+[Andrei Arhire](https://scholar.google.com/citations?user=BYkEZGFPq1wC&hl=ro), [Radu Timofte](https://scholar.google.com/citations?user=u3MwH5kAAAAJ&hl=en)
+
+----
+
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2505.10420)
 [![Paper page](https://huggingface.co/datasets/huggingface/badges/raw/main/paper-page-md-dark.svg)](https://huggingface.co/papers/2505.10420)
 
-[Andrei Arhire](https://scholar.google.com/citations?user=BYkEZGFPq1wC&hl=ro), [Radu Timofte](https://scholar.google.com/citations?user=u3MwH5kAAAAJ&hl=en)
+[[Citation]](#citation) [[Oral]](#oral) [[Poster]](#poster)
 
 ----
 
@@ -69,6 +73,14 @@ Compared to paired approaches, our strategy does not require the costly and time
 
 We provide pre-trained models and inference scripts in [`pretrained/`](./pretrained/) directory, corresponding to the models listed in Tables 1 and 2 of the paper.
 
+## Oral
+
+### [[Oral on Youtube]](https://www.youtube.com/watch?v=hUC7SGEYsl0&t=14196s) [[Download Oral Slides]](https://drive.google.com/file/d/1WpA2RLNJ2l91PdN3gM0edJJQh1D7bB4e/view)
+
+## Poster
+
+### [[Download Poster]](https://drive.google.com/file/d/1WpA2RLNJ2l91PdN3gM0edJJQh1D7bB4e/view)
+
 ### Citation
 
 If you find this work useful for your research, please cite our paper:
@@ -93,3 +105,4 @@ We are grateful for the helpful resources provided by the following projects:
 - [LAN](https://github.com/draimundo/LAN)
 
 **Contact** andreiarhire2708@gmail.com
+
