@@ -79,7 +79,7 @@ We provide pre-trained models and inference scripts in [`pretrained/`](./pretrai
 
 ## Poster
 
-### [[Download Poster]](https://drive.google.com/file/d/1WpA2RLNJ2l91PdN3gM0edJJQh1D7bB4e/view)
+### [[Download Poster]](https://drive.google.com/file/d/1DrLku9KV_vSldkZRrACqZ_1lE5UBJzZo/view)
 
 ### Citation
 
