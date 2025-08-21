@@ -2,40 +2,36 @@ import torch
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from torchvision import transforms
 import numpy as np
-from PIL import Image
+import imageio.v3 as imageio
 import os
-from scipy.ndimage import convolve
 import random
 import torch.nn.functional as F
-import cv2
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 from config import config
+from raw_transforms import raw_transform_, raw_to_rgb_transform_, rgb_transform_
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 
 class ZRRDataset(Dataset):
-    def __init__(self, img_dir1, img_dir2, raw_transform, raw_to_rgb_transform, dslr_transform, shuffled):
+    def __init__(self, img_dir1, img_dir2, raw_transform, raw_to_rgb_transform, dslr_transform):
         self.img_path1 = sorted([os.path.join(img_dir1, f) for f in os.listdir(img_dir1)])
         self.img_path2 = sorted([os.path.join(img_dir2, f) for f in os.listdir(img_dir2)])
         self.raw_transform = raw_transform
         self.raw_to_rgb_transform = raw_to_rgb_transform
         self.dslr_transform = dslr_transform
-        if shuffled:
-            print("Target images are shuffled!")
-            self.img_path2 = random.sample(self.img_path2, len(self.img_path2))
-        else:
-            print("Target images are not shuffled!")
-
+        print("Target images are shuffled!")
+        self.img_path2 = random.sample(self.img_path2, len(self.img_path2))
 
     def __len__(self):
         return len(self.img_path1)
 
     def __getitem__(self, idx):
-        raw_ = Image.open(self.img_path1[idx])
-        custom_rgb_ = Image.open(self.img_path1[idx])
-        dslr_ = Image.open(self.img_path2[idx])
+        raw_np = imageio.imread(self.img_path1[idx])
+        dslr_np = imageio.imread(self.img_path2[idx])
 
-        raw_ = self.raw_transform(raw_)
-        custom_rgb_ = self.raw_to_rgb_transform(custom_rgb_)
-        dslr_ = self.dslr_transform(dslr_)
+        raw_ = self.raw_transform(raw_np)
+        custom_rgb_ = self.raw_to_rgb_transform(raw_np)
+        dslr_ = self.dslr_transform(dslr_np)
 
         return raw_, custom_rgb_, dslr_
 
@@ -153,9 +149,11 @@ dslr_transform = transforms.Compose([
     ))
 ])
 
-dataset = ZRRDataset(config.path_input, config.path_output, raw_transform, raw_to_rgb_transform, dslr_transform, shuffled=config.shuffled)
+#dataset = ZRRDataset(config.path_input, config.path_output, raw_transform, raw_to_rgb_transform, dslr_transform)
+dataset = ZRRDataset(config.path_input, config.path_output, raw_transform_, raw_to_rgb_transform_, rgb_transform_)
+
 
 def get_dataloader():
     random_indices = random.sample(range(len(dataset)), config.chunks_size)
     sampler = SubsetRandomSampler(random_indices)
-    return DataLoader(dataset, batch_size=config.batch_size, sampler=sampler, pin_memory=True, num_workers=4)
+    return DataLoader(dataset, batch_size=config.batch_size, sampler=sampler, pin_memory=True, num_workers=min(32, os.cpu_count() - 1))
